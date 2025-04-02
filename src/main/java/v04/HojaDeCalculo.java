@@ -27,5 +27,34 @@ public class HojaDeCalculo {
 
     public int getNumeroDeColumnas() {
         return COLUMNAS;
-    }    
+    }
+
+    public void ordenarColumna(int columna, boolean ascendente) {
+        if (ascendente) {
+            for (int i = 0; i < FILAS; i++) {
+                int temp = Integer.parseInt(celdas[i][columna].getContenido());
+                for (int j = i; j < FILAS; j++) {
+                    int celda = Integer.parseInt(celdas[i][columna].getContenido());
+                    if (temp > celda) {
+                        temp = celda;
+                        celdas[j][columna].setContenido(celdas[i][columna].getContenido());
+                        celdas[i][columna].setContenido(String.valueOf(temp));
+                    }
+                }
+            }
+        } else {
+            for (int i = 0; i < FILAS; i++) {
+                int temp = Integer.parseInt(celdas[i][columna].getContenido());
+                for (int j = i; j < FILAS; j++) {
+                    int celda = Integer.parseInt(celdas[i][columna].getContenido());
+                    if (temp < celda) {
+                        temp = celda;
+                        celdas[j][columna].setContenido(celdas[i][columna].getContenido());
+                        celdas[i][columna].setContenido(String.valueOf(temp));
+                    }
+                }
+            }
+
+        }
+    }
 }
