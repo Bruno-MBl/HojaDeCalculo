@@ -6,8 +6,10 @@ import librerias.Consola;
 public class VisiCalcUI {
     private Viewport viewport;
     private Scanner scanner;
+    private HojaDeCalculo hoja;
 
     public VisiCalcUI(HojaDeCalculo hoja) {
+        this.hoja = hoja;
         this.viewport = new Viewport(hoja, 15, 10);
         this.scanner = new Scanner(System.in);
     }
@@ -62,7 +64,7 @@ public class VisiCalcUI {
         char letraColumna = (char) ('A' + columnaActual);
 
         System.out.print("[" + letraColumna + (filaActual + 1) + "] ");
-        System.out.println("OPCIONES: desplazarse: wasd | editar: e | salir: q");
+        System.out.println("OPCIONES: desplazarse: wasd | editar: e | ordenar: o | salir: q");
         System.out.println("COMANDO >");
 
     }
@@ -105,5 +107,7 @@ public class VisiCalcUI {
 
     private void ordenarColumna() {
         int columna = viewport.getColumnaCursorGlobal();
+        System.out.println("ordenando columna: " + columna);
+        hoja.ordenarColumna(columna);
     }
 }
